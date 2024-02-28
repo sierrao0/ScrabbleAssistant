@@ -14,6 +14,7 @@ class Diccionario{
     void agregarPalabra(std::string palabra);
     bool iniDiccionario(std::string diccionario);
     bool iniDiccionarioInverso(std::string diccionario);
+    int puntuarPalabra(std::string palabra);
     void printDiccionario();
     void printDiccionarioInverso();
 };

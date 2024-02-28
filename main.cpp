@@ -23,6 +23,7 @@ int main()
     std::stringstream ss(opcion);
     std::string token;
     std::vector<std::string> tokens; // Vector para guardar tokens
+    Diccionario miDiccionario;       // Crear un objeto de la clase Diccionario
 
     while (std::getline(ss, token, ' '))
     {
@@ -41,14 +42,13 @@ int main()
       }
       else if (tokens.size() == 2)
       {
-        Diccionario miDiccionario; // Crear un objeto de la clase Diccionario
         // Llamar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
         if (miDiccionario.iniDiccionario(tokens[1]))
         {
           std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado = true;
         }
-        //miDiccionario.printDiccionario();
+        miDiccionario.printDiccionario();
       }
       if (!inicializado)
       {
@@ -66,14 +66,13 @@ int main()
       }
       else if (tokens.size() == 2)
       {
-        Diccionario miDiccionario; // Crear un objeto de la clase Diccionario
         // Llamar y comprobar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
         if (miDiccionario.iniDiccionarioInverso(tokens[1]))
         {
           std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado_IN = true;
         }
-        //miDiccionario.printDiccionarioInverso();
+        miDiccionario.printDiccionarioInverso();
       }
       if (!inicializado_IN)
       {
@@ -84,20 +83,14 @@ int main()
     }
     else if (tokens[0] == "puntaje")
     {
-      if (existe)
+      int puntaje = miDiccionario.puntuarPalabra(tokens[1]);
+      if (puntaje > 0)
       {
-        if (true /*si la palabra es valida*/)
-        {
-          int puntaje = 0;
-          // TODO #3 -> Evaluar puntaje
-          // puntaje=resultado;
-          std::cout << "La palabra tiene un puntaje de: " << puntaje
-                    << std::endl;
-        }
-        else
-        {
-          std::cout << "La palabra tiene simbolos invalidos" << std::endl;
-        }
+        std::cout << "La palabra tiene un puntaje de: " << puntaje << std::endl;
+      }
+      else if(puntaje < 0)
+      {
+        std::cout << "La palabra tiene simbolos invalidos" << std::endl;
       }
       else
       {

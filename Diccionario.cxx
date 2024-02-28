@@ -7,6 +7,7 @@
 #include <cctype>
 #include <fstream>
 #include <iostream>
+#include <string.h>
 
 std::vector<std::string> Diccionario::obtenerPalabras()
 {
@@ -122,5 +123,70 @@ bool Diccionario::iniDiccionarioInverso(std::string diccionario)
     // Cierra el archivo
     archivo.close();
     return true;
+}
+
+int Diccionario::puntuarPalabra(std::string palabra)
+{
+    int puntuacion = 0;
+    bool existe = false;
+    if (!verificarPalabra(palabra))
+    {
+        return -1;
+    }
+    
+    // Verifica si existe la palabra en el diccionario normal
+    for (std::vector<std::string>::iterator it = palabras.begin(); it != palabras.end(); ++it)
+    {
+        if (*it == palabra)
+        {
+            existe = true;
+        }
+    }
+    // Verifica si existe la palabra en el diccionario inverso
+    for (std::vector<std::string>::iterator it = palabrasInversas.begin(); it != palabrasInversas.end(); ++it)
+    {
+        if (*it == palabra)
+        {
+            existe = true;
+        }
+    }
+    
+    if (existe)
+    {
+        for (int i = 0; i < palabra.length(); i++)
+        {
+            if (palabra[i] == 'e' || palabra[i] == 'a' || palabra[i] == 'i' || palabra[i] == 'o' || palabra[i] == 'n' || palabra[i] == 'r' || palabra[i] == 't' || palabra[i] == 'l' || palabra[i] == 's' || palabra[i] == 'u')
+            {
+                puntuacion++;
+            }
+            if (palabra[i] == 'd' || palabra[i] == 'g')
+            {
+                puntuacion += 2;
+            }
+            if (palabra[i] == 'b' || palabra[i] == 'c' || palabra[i] == 'm' || palabra[i] == 'p')
+            {
+                puntuacion += 3;
+            }
+            if (palabra[i] == 'f' || palabra[i] == 'h' || palabra[i] == 'v' || palabra[i] == 'w' || palabra[i] == 'y')
+            {
+                puntuacion += 4;
+            }
+            if (palabra[i] == 'k')
+            {
+                puntuacion += 5;
+            }
+            if (palabra[i] == 'j' || palabra[i] == 'x')
+            {
+                puntuacion += 8;
+            }
+            if (palabra[i] == 'q' || palabra[i] == 'z')
+            {
+                puntuacion += 10;
+            }
+        }
+    }else{
+        return 0; //No se ha encontrado la palabra
+    }
+    return puntuacion;
 }
 #endif
