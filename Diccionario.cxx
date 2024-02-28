@@ -45,8 +45,8 @@ bool Diccionario::iniDiccionario(std::string diccionario) {
             palabras.push_back(linea);
         }
     }
-    return true;
     // Cierra el archivo
     archivo.close();
+    return true;
 }
 #endif
