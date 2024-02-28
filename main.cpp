@@ -11,9 +11,9 @@ int main()
 {
   std::string opcion;
   bool inicializado = false, inicializado_IN = false, existe = false, valido = false; // Banderas
+  Diccionario miDiccionario;                                                          // Crear un objeto de la clase Diccionario
   clear();
-  std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|"
-            << std::endl;
+  std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|" << std::endl;
 
   while (true)
   {
@@ -23,7 +23,6 @@ int main()
     std::stringstream ss(opcion);
     std::string token;
     std::vector<std::string> tokens; // Vector para guardar tokens
-    Diccionario miDiccionario;       // Crear un objeto de la clase Diccionario
 
     while (std::getline(ss, token, ' '))
     {
@@ -48,7 +47,7 @@ int main()
           std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado = true;
         }
-        miDiccionario.printDiccionario();
+        // miDiccionario.printDiccionario(); //Imprimir palabras del diccionario
       }
       if (!inicializado)
       {
@@ -72,7 +71,7 @@ int main()
           std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado_IN = true;
         }
-        miDiccionario.printDiccionarioInverso();
+        // miDiccionario.printDiccionarioInverso(); //Imprimir palabras del diccionario inverso
       }
       if (!inicializado_IN)
       {
@@ -88,7 +87,7 @@ int main()
       {
         std::cout << "La palabra tiene un puntaje de: " << puntaje << std::endl;
       }
-      else if(puntaje < 0)
+      else if (puntaje < 0)
       {
         std::cout << "La palabra tiene simbolos invalidos" << std::endl;
       }

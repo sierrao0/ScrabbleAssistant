@@ -133,7 +133,6 @@ int Diccionario::puntuarPalabra(std::string palabra)
     {
         return -1;
     }
-    
     // Verifica si existe la palabra en el diccionario normal
     for (std::vector<std::string>::iterator it = palabras.begin(); it != palabras.end(); ++it)
     {
@@ -150,42 +149,44 @@ int Diccionario::puntuarPalabra(std::string palabra)
             existe = true;
         }
     }
-    
+
     if (existe)
     {
-        for (int i = 0; i < palabra.length(); i++)
+        for (char c : palabra)
         {
-            if (palabra[i] == 'e' || palabra[i] == 'a' || palabra[i] == 'i' || palabra[i] == 'o' || palabra[i] == 'n' || palabra[i] == 'r' || palabra[i] == 't' || palabra[i] == 'l' || palabra[i] == 's' || palabra[i] == 'u')
+            if (c == 'e' || c == 'a' || c == 'i' || c == 'o' || c == 'n' || c == 'r' || c == 't' || c == 'l' || c == 's' || c == 'u')
             {
                 puntuacion++;
             }
-            if (palabra[i] == 'd' || palabra[i] == 'g')
+            if (c == 'd' || c == 'g')
             {
                 puntuacion += 2;
             }
-            if (palabra[i] == 'b' || palabra[i] == 'c' || palabra[i] == 'm' || palabra[i] == 'p')
+            if (c == 'b' || c == 'c' || c == 'm' || c == 'p')
             {
                 puntuacion += 3;
             }
-            if (palabra[i] == 'f' || palabra[i] == 'h' || palabra[i] == 'v' || palabra[i] == 'w' || palabra[i] == 'y')
+            if (c == 'f' || c == 'h' || c == 'v' || c == 'w' || c == 'y')
             {
                 puntuacion += 4;
             }
-            if (palabra[i] == 'k')
+            if (c == 'k')
             {
                 puntuacion += 5;
             }
-            if (palabra[i] == 'j' || palabra[i] == 'x')
+            if (c == 'j' || c == 'x')
             {
                 puntuacion += 8;
             }
-            if (palabra[i] == 'q' || palabra[i] == 'z')
+            if (c == 'q' || c == 'z')
             {
                 puntuacion += 10;
             }
         }
-    }else{
-        return 0; //No se ha encontrado la palabra
+    }
+    else
+    {
+        return 0; // No se ha encontrado la palabra
     }
     return puntuacion;
 }

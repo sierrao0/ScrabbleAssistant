@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0_Arias_Murcia",
-      "program": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0_Arias_Murcia/build/Debug/outDebug",
+      "program": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0_Arias_Murcia/programa.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
