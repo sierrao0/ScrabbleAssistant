@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0AriasMurcia",
-      "program": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0AriasMurcia/build/Debug/outDebug",
+      "cwd": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0_Arias_Murcia",
+      "program": "c:/Users/kamis/OneDrive/Documentos/College/DataStruct/Proyecto/Entrega0_Arias_Murcia/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

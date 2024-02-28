@@ -7,11 +7,15 @@
 class Diccionario{
     protected:
     std::vector<std::string> palabras;
+    std::vector<std::string> palabrasInversas;
     public:
     std:: vector<std::string> obtenerPalabras();
     bool verificarPalabra(std::string palabra);
     void agregarPalabra(std::string palabra);
     bool iniDiccionario(std::string diccionario);
+    bool iniDiccionarioInverso(std::string diccionario);
+    void printDiccionario();
+    void printDiccionarioInverso();
 };
 
 #include "Diccionario.cxx"

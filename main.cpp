@@ -7,14 +7,16 @@
 
 void clear() { std::cout << "\033[2J\033[1;1H"; }
 
-int main() {
+int main()
+{
   std::string opcion;
-  bool inicializado = false, existe = false, valido = false; // Banderas
+  bool inicializado = false, inicializado_IN = false, existe = false, valido = false; // Banderas
   clear();
   std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|"
             << std::endl;
 
-  while (true) {
+  while (true)
+  {
     std::cout << "\nDigite un comando:" << std::endl;
     std::cout << "$ ";
     std::getline(std::cin, opcion);
@@ -22,123 +24,181 @@ int main() {
     std::string token;
     std::vector<std::string> tokens; // Vector para guardar tokens
 
-    while (std::getline(ss, token, ' ')) {
+    while (std::getline(ss, token, ' '))
+    {
       tokens.push_back(token); // Guarda cada token en el vector
     }
 
-    if (tokens[0] == "salir") {
+    if (tokens[0] == "salir")
+    {
       break;
-    } else if (tokens[0] == "inicializar") {
-      if (inicializado) {
+    }
+    else if (tokens[0] == "inicializar")
+    {
+      if (inicializado)
+      {
         std::cout << "El diccionario ya ha sido inicializado." << std::endl;
-      } else if (tokens.size() == 2) {
-          Diccionario miDiccionario; // Crear un objeto de la clase Diccionario
-          // Llamar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
-          miDiccionario.iniDiccionario(tokens[1]);
-        if(miDiccionario.iniDiccionario(tokens[1])){
-            std::cout << "El diccionario " << tokens[1]
-                      << " se ha inicializado correctamente." << std::endl;
-            inicializado = true;
+      }
+      else if (tokens.size() == 2)
+      {
+        Diccionario miDiccionario; // Crear un objeto de la clase Diccionario
+        // Llamar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
+        if (miDiccionario.iniDiccionario(tokens[1]))
+        {
+          std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
+          inicializado = true;
         }
+        //miDiccionario.printDiccionario();
       }
-      if (!inicializado) {
+      if (!inicializado)
+      {
         std::cout
             << "El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
-    } else if (tokens[0] == "iniciar_inverso") {
-      if (inicializado) {
-        std::cout << "El diccionario inverso ya ha sido inicializado."
+    }
+    else if (tokens[0] == "iniciar_inverso")
+    {
+      if (inicializado_IN)
+      {
+        std::cout << "El diccionario ya ha sido inicializado."
                   << std::endl;
-      } else if (tokens.size() == 2) {
-        // TODO #2 -> Leer archivo <tokens[1]> {
-        std::cout << "El diccionario " << tokens[1]
-                  << " se ha inicializado correctamente." << std::endl;
-        inicializado = true;
-        //}
       }
-      if (!inicializado) {
+      else if (tokens.size() == 2)
+      {
+        Diccionario miDiccionario; // Crear un objeto de la clase Diccionario
+        // Llamar y comprobar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
+        if (miDiccionario.iniDiccionarioInverso(tokens[1]))
+        {
+          std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
+          inicializado_IN = true;
+        }
+        //miDiccionario.printDiccionarioInverso();
+      }
+      if (!inicializado_IN)
+      {
         std::cout
             << "El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
-    } else if (tokens[0] == "puntaje") {
-      if (existe) {
-        if (true /*si la palabra es valida*/) {
+    }
+    else if (tokens[0] == "puntaje")
+    {
+      if (existe)
+      {
+        if (true /*si la palabra es valida*/)
+        {
           int puntaje = 0;
           // TODO #3 -> Evaluar puntaje
           // puntaje=resultado;
           std::cout << "La palabra tiene un puntaje de: " << puntaje
                     << std::endl;
-        } else {
+        }
+        else
+        {
           std::cout << "La palabra tiene simbolos invalidos" << std::endl;
         }
-      } else {
+      }
+      else
+      {
         std::cout << "La palabra no existe en el diccionario." << std::endl;
       }
-    } else if (tokens[0] == "iniciar_arbol") {
-      if (inicializado) {
+    }
+    else if (tokens[0] == "iniciar_arbol")
+    {
+      if (inicializado)
+      {
         std::cout << "El arbol del diccionario ya ha sido inicializado."
                   << std::endl;
-      } else if (tokens.size() == 2) {
+      }
+      else if (tokens.size() == 2)
+      {
         // TODO #4 -> Leer archivo <tokens[1]> {
         std::cout << "El arbol del diccionario " << tokens[1]
                   << " se ha inicializado correctamente." << std::endl;
         inicializado = true;
         //}
       }
-      if (!inicializado) {
+      if (!inicializado)
+      {
         std::cout
             << "El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
-    } else if (tokens[0] == "iniciar_arbol_inverso") {
-      if (inicializado) {
+    }
+    else if (tokens[0] == "iniciar_arbol_inverso")
+    {
+      if (inicializado)
+      {
         std::cout << "El arbol del diccionario inverso ya ha sido inicializado."
                   << std::endl;
-      } else if (tokens.size() == 2) {
+      }
+      else if (tokens.size() == 2)
+      {
         // TODO #5 -> Leer archivo <tokens[1]> {
         std::cout << "El arbol del diccionario inverso " << tokens[1]
                   << " se ha inicializado correctamente." << std::endl;
         inicializado = true;
         //}
       }
-      if (!inicializado) {
+      if (!inicializado)
+      {
         std::cout
             << "El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
-    } else if (tokens[0] == "palabras_por_prefijo") {
-      if (!existe || tokens.size() < 2) {
+    }
+    else if (tokens[0] == "palabras_por_prefijo")
+    {
+      if (!existe || tokens.size() < 2)
+      {
         std::cout << "El prefijo no existe en el diccionario." << std::endl;
-      } else {
+      }
+      else
+      {
         std::cout << "Las palabras que inician con el prefijo " << tokens[1]
                   << " son: " << std::endl;
         // TODO #6 -> Imprimir palabras por prefijo
       }
-    } else if (tokens[0] == "palabras_por_sufijo") {
-      if (!existe || tokens.size() < 2) {
+    }
+    else if (tokens[0] == "palabras_por_sufijo")
+    {
+      if (!existe || tokens.size() < 2)
+      {
         std::cout << "El sufijo no existe en el diccionario." << std::endl;
-      } else {
+      }
+      else
+      {
         std::cout << "Las palabras que terminan con el prefijo " << tokens[1]
                   << " son: " << std::endl;
         // TODO #7 -> Imprimir palabras por sufijo
       }
-    } else if (tokens[0] == "grafo_de_palabras") {
+    }
+    else if (tokens[0] == "grafo_de_palabras")
+    {
       // TODO #8 -> Construir grafo de palabras
       std::cout << "Grafo construido correctamente. " << std::endl;
-    } else if (tokens[0] == "posibles_palabras") {
-      if (!valido || tokens.size() < 2) {
+    }
+    else if (tokens[0] == "posibles_palabras")
+    {
+      if (!valido || tokens.size() < 2)
+      {
         std::cout << "La cadena esta vacia o contiene simbolos invalidos."
                   << std::endl;
-      } else {
+      }
+      else
+      {
         std::cout << "Las palabras posibles a construir con las letras "
                   << tokens[1] << " son:" << std::endl;
         // TODO #9 -> Imprimir posibles palabras
       }
-    } else if (tokens[0] == "ayuda") {
-      if (tokens.size() == 2) {
-        if (tokens[1] == "inicializar") {
+    }
+    else if (tokens[0] == "ayuda")
+    {
+      if (tokens.size() == 2)
+      {
+        if (tokens[1] == "inicializar")
+        {
           clear();
           std::cout
               << "********************************************" << std::endl
@@ -149,7 +209,9 @@ int main() {
                  "un diccionario de palabras aceptadas en el idioma inglés "
                  "(idioma original del juego)."
               << std::endl;
-        } else if (tokens[1] == "iniciar_inverso") {
+        }
+        else if (tokens[1] == "iniciar_inverso")
+        {
           clear();
           std::cout
               << "************************************************" << std::endl
@@ -163,7 +225,9 @@ int main() {
                  "izquierda), teniendo en cuenta que sea fácil recuperarlas "
                  "posteriormente."
               << std::endl;
-        } else if (tokens[1] == "puntaje") {
+        }
+        else if (tokens[1] == "puntaje")
+        {
           clear();
           std::cout << "********************************" << std::endl
                     << "* Comando: '$ puntaje palabra' *" << std::endl
@@ -172,13 +236,17 @@ int main() {
                        "obtenerse con una palabra dada, de acuerdo a la tabla "
                        "de puntuación de cada letra presentada anteriormente."
                     << std::endl;
-        } else if (tokens[1] == "salir") {
+        }
+        else if (tokens[1] == "salir")
+        {
           clear();
           std::cout << "**********************" << std::endl
                     << "* Comando: '$ salir' *" << std::endl
                     << "**********************" << std::endl
                     << "\nTermina la ejecución de la aplicación." << std::endl;
-        } else if (tokens[1] == "iniciar_arbol") {
+        }
+        else if (tokens[1] == "iniciar_arbol")
+        {
           clear();
           std::cout
               << "**********************************************" << std::endl
@@ -191,7 +259,9 @@ int main() {
                  "las palabras en uno o más árboles de letras (como se "
                  "considere conveniente)."
               << std::endl;
-        } else if (tokens[1] == "iniciar_arbol_inverso") {
+        }
+        else if (tokens[1] == "iniciar_arbol_inverso")
+        {
           clear();
           std::cout << "******************************************************"
                     << std::endl
@@ -207,7 +277,9 @@ int main() {
                        "las palabras en uno o más árboles de letras, pero en "
                        "sentido inverso (leídas de derecha a izquierda)."
                     << std::endl;
-        } else if (tokens[1] == "palabras_por_prefijo") {
+        }
+        else if (tokens[1] == "palabras_por_prefijo")
+        {
           clear();
           std::cout << "*********************************************"
                     << std::endl
@@ -220,7 +292,9 @@ int main() {
                        "comando iniciar_arbol) para ubicar todas las palabras "
                        "posibles a construir a partir de ese prefijo."
                     << std::endl;
-        } else if (tokens[1] == "palabras_por_sufijo") {
+        }
+        else if (tokens[1] == "palabras_por_sufijo")
+        {
           clear();
           std::cout
               << "*******************************************" << std::endl
@@ -231,7 +305,9 @@ int main() {
                  "iniciar_arbol_inverso) para ubicar todas las palabras "
                  "posibles a construir que terminan con ese sufijo. "
               << std::endl;
-        } else if (tokens[1] == "grafo_de_palabras") {
+        }
+        else if (tokens[1] == "grafo_de_palabras")
+        {
           clear();
           std::cout << "**********************************" << std::endl
                     << "* Comando: '$ grafo_de_palabras' *" << std::endl
@@ -240,7 +316,9 @@ int main() {
                        "(luego de ejecutar el comando inicializar), el comando "
                        "construye un grafo de palabras."
                     << std::endl;
-        } else if (tokens[1] == "posibles_palabras") {
+        }
+        else if (tokens[1] == "posibles_palabras")
+        {
           clear();
           std::cout << "*****************************************" << std::endl
                     << "* Comando: '$ posibles_palabras letras' *" << std::endl
@@ -251,17 +329,23 @@ int main() {
                        "construir, indicando la longitud de cada una y la "
                        "puntuación que se puede obtener con cada una."
                     << std::endl;
-        } else if (tokens[1] == "clear") {
+        }
+        else if (tokens[1] == "clear")
+        {
           clear();
           std::cout << "**********************" << std::endl
                     << "* Comando: '$ clear' *" << std::endl
                     << "**********************" << std::endl
                     << "\nLimpia la consola." << std::endl;
-        } else {
+        }
+        else
+        {
           clear();
           std::cout << "Escriba un comando valido!! ($ ayuda)" << std::endl;
         }
-      } else {
+      }
+      else
+      {
         clear();
         std::cout << "| Listado de comandos del sistema |\n\n";
         std::cout << "-> inicializar \n";
@@ -277,9 +361,13 @@ int main() {
         std::cout << "-> salir" << std::endl;
         std::cout << "\nMas informacion: $ ayuda <comando>" << std::endl;
       }
-    } else if (tokens[0] == "clear") {
+    }
+    else if (tokens[0] == "clear")
+    {
       clear();
-    } else {
+    }
+    else
+    {
       clear();
       std::cout << "Escriba un comando valido!! ($ ayuda)" << std::endl;
     }
