@@ -4,12 +4,14 @@
 #include <vector>
 #include <string>
 
-class Diccionario{
-    protected:
+class Diccionario
+{
+protected:
     std::vector<std::string> palabras;
     std::vector<std::string> palabrasInversas;
-    public:
-    std:: vector<std::string> obtenerPalabras();
+
+public:
+    std::vector<std::string> obtenerPalabras();
     bool verificarPalabra(std::string palabra);
     void agregarPalabra(std::string palabra);
     bool iniDiccionario(std::string diccionario);

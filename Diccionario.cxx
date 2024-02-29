@@ -34,8 +34,8 @@ bool Diccionario::verificarPalabra(std::string palabra)
 {
     for (char c : palabra)
     {
-        if (!isalpha(c))
-        { // Comprueba si el carácter no es una letra
+        if (!isalpha(c)) // Comprueba si el carácter no es una letra
+        { 
             return false;
         }
     }
