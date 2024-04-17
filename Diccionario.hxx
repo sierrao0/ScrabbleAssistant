@@ -1,5 +1,5 @@
-#ifndef __DICCIONARIO__CXX__
-#define __DICCIONARIO__CXX__
+#ifndef __DICCIONARIO__HXX__
+#define __DICCIONARIO__HXX__
 
 #include "Diccionario.h"
 #include <vector>

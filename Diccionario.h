@@ -21,6 +21,6 @@ public:
     void printDiccionarioInverso();
 };
 
-#include "Diccionario.cxx"
+#include "Diccionario.hxx"
 
 #endif
