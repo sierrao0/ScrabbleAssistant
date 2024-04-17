@@ -42,7 +42,7 @@ int main()
       else if (tokens.size() == 2)
       {
         // Llamar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
-        if (miDiccionario.iniDiccionario(tokens[1]))
+        if (miDiccionario.iniDiccionario("assets/" + tokens[1]))
         {
           std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado = true;
@@ -354,7 +354,7 @@ int main()
         std::cout << "\nMas informacion: $ ayuda <comando>" << std::endl;
       }
     }
-    else if (tokens[0] == "clear")
+    else if (tokens[0] == "clear" || tokens[0] == "cl")
     {
       clear();
     }
