@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "Diccionario.h"
+#include "Sistema.h"
 
 void clear() { std::cout << "\033[2J\033[1;1H"; }
 
@@ -11,13 +11,13 @@ int main()
 {
   std::string opcion;
   bool inicializado = false, inicializado_IN = false, existe = false, valido = false; // Banderas
-  Diccionario miDiccionario;                                                          // Crear un objeto de la clase Diccionario
+  Sistema sistema;                                                        // Crear un objeto de la clase Diccionario
   clear();
-  std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|" << std::endl;
+  std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|\n" << std::endl;
 
   while (true)
   {
-    std::cout << "\nDigite un comando:" << std::endl;
+    std::cout << "Digite un comando:" << std::endl;
     std::cout << "$ ";
     std::getline(std::cin, opcion);
     std::stringstream ss(opcion);
@@ -37,38 +37,36 @@ int main()
     {
       if (inicializado)
       {
-        std::cout << "El diccionario ya ha sido inicializado." << std::endl;
+        std::cout << "-> El diccionario ya ha sido inicializado." << std::endl;
       }
       else if (tokens.size() == 2)
       {
         // Llamar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
-        if (miDiccionario.iniDiccionario("assets/" + tokens[1]))
+        if (sistema.getDiccionario()->iniDiccionario(tokens[1]))
         {
-          std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
+          std::cout << "-> El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado = true;
         }
-        // miDiccionario.printDiccionario(); //Imprimir palabras del diccionario
+        //sistema.getDiccionario().printDiccionario(); //Imprimir palabras del diccionario
       }
       if (!inicializado)
       {
-        std::cout
-            << "El archivo no existe o no se ha podido leer correctamente."
-            << std::endl;
+        std::cout<< "-> El archivo no existe o no se ha podido leer correctamente."<< std::endl;
       }
     }
     else if (tokens[0] == "iniciar_inverso")
     {
       if (inicializado_IN)
       {
-        std::cout << "El diccionario ya ha sido inicializado."
+        std::cout << "-> El diccionario ya ha sido inicializado."
                   << std::endl;
       }
       else if (tokens.size() == 2)
       {
         // Llamar y comprobar al método inicializarDiccionario con el nombre del archivo de diccionario como argumento
-        if (miDiccionario.iniDiccionarioInverso(tokens[1]))
+        if (sistema.getDiccionario()->iniDiccionarioInverso(tokens[1]))
         {
-          std::cout << "El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
+          std::cout << "-> El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado_IN = true;
         }
         // miDiccionario.printDiccionarioInverso(); //Imprimir palabras del diccionario inverso
@@ -76,37 +74,37 @@ int main()
       if (!inicializado_IN)
       {
         std::cout
-            << "El archivo no existe o no se ha podido leer correctamente."
+            << "-> El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
     }
     else if (tokens[0] == "puntaje")
     {
-      int puntaje = miDiccionario.puntuarPalabra(tokens[1]);
+      int puntaje = sistema.getDiccionario()->puntuarPalabra(tokens[1]);
       if (puntaje > 0)
       {
-        std::cout << "La palabra tiene un puntaje de: " << puntaje << std::endl;
+        std::cout << "-> La palabra tiene un puntaje de: " << puntaje << std::endl;
       }
       else if (puntaje < 0)
       {
-        std::cout << "La palabra tiene simbolos invalidos" << std::endl;
+        std::cout << "-> La palabra tiene simbolos invalidos" << std::endl;
       }
       else
       {
-        std::cout << "La palabra no existe en el diccionario." << std::endl;
+        std::cout << "-> La palabra no existe en el diccionario." << std::endl;
       }
     }
     else if (tokens[0] == "iniciar_arbol")
     {
       if (inicializado)
       {
-        std::cout << "El arbol del diccionario ya ha sido inicializado."
+        std::cout << "-> El arbol del diccionario ya ha sido inicializado."
                   << std::endl;
       }
       else if (tokens.size() == 2)
       {
         // TODO #4 -> Leer archivo <tokens[1]> {
-        std::cout << "El arbol del diccionario " << tokens[1]
+        std::cout << "-> El arbol del diccionario " << tokens[1]
                   << " se ha inicializado correctamente." << std::endl;
         inicializado = true;
         //}
@@ -114,7 +112,7 @@ int main()
       if (!inicializado)
       {
         std::cout
-            << "El archivo no existe o no se ha podido leer correctamente."
+            << "-> El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
     }
@@ -122,13 +120,13 @@ int main()
     {
       if (inicializado)
       {
-        std::cout << "El arbol del diccionario inverso ya ha sido inicializado."
+        std::cout << "-> El arbol del diccionario inverso ya ha sido inicializado."
                   << std::endl;
       }
       else if (tokens.size() == 2)
       {
         // TODO #5 -> Leer archivo <tokens[1]> {
-        std::cout << "El arbol del diccionario inverso " << tokens[1]
+        std::cout << "-> El arbol del diccionario inverso " << tokens[1]
                   << " se ha inicializado correctamente." << std::endl;
         inicializado = true;
         //}
@@ -136,7 +134,7 @@ int main()
       if (!inicializado)
       {
         std::cout
-            << "El archivo no existe o no se ha podido leer correctamente."
+            << "-> El archivo no existe o no se ha podido leer correctamente."
             << std::endl;
       }
     }
@@ -144,11 +142,11 @@ int main()
     {
       if (!existe || tokens.size() < 2)
       {
-        std::cout << "El prefijo no existe en el diccionario." << std::endl;
+        std::cout << "-> El prefijo no existe en el diccionario." << std::endl;
       }
       else
       {
-        std::cout << "Las palabras que inician con el prefijo " << tokens[1]
+        std::cout << "-> Las palabras que inician con el prefijo " << tokens[1]
                   << " son: " << std::endl;
         // TODO #6 -> Imprimir palabras por prefijo
       }
@@ -157,11 +155,11 @@ int main()
     {
       if (!existe || tokens.size() < 2)
       {
-        std::cout << "El sufijo no existe en el diccionario." << std::endl;
+        std::cout << "-> El sufijo no existe en el diccionario." << std::endl;
       }
       else
       {
-        std::cout << "Las palabras que terminan con el prefijo " << tokens[1]
+        std::cout << "-> Las palabras que terminan con el prefijo " << tokens[1]
                   << " son: " << std::endl;
         // TODO #7 -> Imprimir palabras por sufijo
       }
@@ -169,18 +167,18 @@ int main()
     else if (tokens[0] == "grafo_de_palabras")
     {
       // TODO #8 -> Construir grafo de palabras
-      std::cout << "Grafo construido correctamente. " << std::endl;
+      std::cout << "-> Grafo construido correctamente. " << std::endl;
     }
     else if (tokens[0] == "posibles_palabras")
     {
       if (!valido || tokens.size() < 2)
       {
-        std::cout << "La cadena esta vacia o contiene simbolos invalidos."
+        std::cout << "-> La cadena esta vacia o contiene simbolos invalidos."
                   << std::endl;
       }
       else
       {
-        std::cout << "Las palabras posibles a construir con las letras "
+        std::cout << "-> Las palabras posibles a construir con las letras "
                   << tokens[1] << " son:" << std::endl;
         // TODO #9 -> Imprimir posibles palabras
       }
@@ -354,7 +352,7 @@ int main()
         std::cout << "\nMas informacion: $ ayuda <comando>" << std::endl;
       }
     }
-    else if (tokens[0] == "clear" || tokens[0] == "cl")
+    else if (tokens[0] == "clear" || tokens[0] == "cls")
     {
       clear();
     }

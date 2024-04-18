@@ -11,6 +11,8 @@ protected:
     std::vector<std::string> palabrasInversas;
 
 public:
+    // Diccionario();
+    // ~Diccionario();
     std::vector<std::string> obtenerPalabras();
     bool verificarPalabra(std::string palabra);
     void agregarPalabra(std::string palabra);

@@ -9,6 +9,14 @@
 #include <iostream>
 #include <string.h>
 
+// Diccionario::Diccionario()
+// {
+// }
+
+// Diccionario::~Diccionario()
+// {
+// }
+
 std::vector<std::string> Diccionario::obtenerPalabras()
 {
     return palabras;
