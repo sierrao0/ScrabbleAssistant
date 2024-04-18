@@ -104,11 +104,11 @@ int main()
       }
       else if (tokens.size() == 2)
       {
-        // TODO #4 -> Leer archivo <tokens[1]> {
-        std::cout << "-> El arbol del diccionario " << tokens[1]
-                  << " se ha inicializado correctamente." << std::endl;
-        inicializado = true;
-        //}
+        if (sistema.getArbol()->iniArbol(tokens[1]))
+        {
+          std::cout << "-> El Arbol " << tokens[1] << " se ha inicializado correctamente." << std::endl;
+          inicializado = true;
+        }
       }
       if (!inicializado)
       {
@@ -126,11 +126,11 @@ int main()
       }
       else if (tokens.size() == 2)
       {
-        // TODO #5 -> Leer archivo <tokens[1]> {
-        std::cout << "-> El arbol del diccionario inverso " << tokens[1]
-                  << " se ha inicializado correctamente." << std::endl;
-        inicializado = true;
-        //}
+        if (sistema.getArbol()->iniArbolInverso(tokens[1]))
+        {
+          std::cout << "-> El Arbol inverso " << tokens[1] << " se ha inicializado correctamente." << std::endl;
+          inicializado = true;
+        }
       }
       if (!inicializado)
       {

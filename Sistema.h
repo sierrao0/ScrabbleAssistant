@@ -2,18 +2,17 @@
 #define __SISTEMA__H__
 
 #include "Diccionario.h"
-
+#include "Trie.h"
 
 class Sistema
 {
 protected:
     Diccionario dicVector;
-    //Arbol dicArbol;
+    Trie dicArbol;
+
 public:
-    // Sistema();
-    // ~Sistema();
-    Diccionario* getDiccionario();
-    // Arbol* getArbol();
+    Diccionario *getDiccionario();
+    Trie *getArbol();
 };
 
 #include "Sistema.hxx"
