@@ -11,7 +11,7 @@ int main()
 {
   std::string opcion;
   bool inicializado = false, inicializado_IN = false, existe = false, valido = false; // Banderas
-  Sistema sistema;                                                        // Crear un objeto de la clase Diccionario
+  Sistema sistema;                                                                    // Crear un objeto de la clase Sistema
   clear();
   std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|\n" << std::endl;
 
