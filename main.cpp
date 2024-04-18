@@ -13,7 +13,8 @@ int main()
   bool inicializado = false, inicializado_IN = false, existe = false, valido = false; // Banderas
   Sistema sistema;                                                                    // Crear un objeto de la clase Sistema
   clear();
-  std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|\n" << std::endl;
+  std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|\n"
+            << std::endl;
 
   while (true)
   {
@@ -47,11 +48,11 @@ int main()
           std::cout << "-> El diccionario " << tokens[1] << " se ha inicializado correctamente." << std::endl;
           inicializado = true;
         }
-        //sistema.getDiccionario().printDiccionario(); //Imprimir palabras del diccionario
+        // sistema.getDiccionario().printDiccionario(); //Imprimir palabras del diccionario
       }
       if (!inicializado)
       {
-        std::cout<< "-> El archivo no existe o no se ha podido leer correctamente."<< std::endl;
+        std::cout << "-> El archivo no existe o no se ha podido leer correctamente." << std::endl;
       }
     }
     else if (tokens[0] == "iniciar_inverso")
