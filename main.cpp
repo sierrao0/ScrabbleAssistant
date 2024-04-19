@@ -162,19 +162,19 @@ int main()
     else if (tokens[0] == "palabras_por_sufijo")
     {
       int puntaje = sistema.getDiccionario()->puntuarPalabra(tokens[1]);
-      std::vector<std::string> copiaVectorPrefijo;
+      std::vector<std::string> copiaVectorSufijo;
       std::vector<std::string>::iterator it; 
-      copiaVectorPrefijo = sistema.getArbol()->palabrasPrefijo(tokens[1]);
+      copiaVectorSufijo = sistema.getArbol()->palabrasSufijo(tokens[1]);
       
-      if (copiaVectorPrefijo.empty())
+      if (copiaVectorSufijo.empty())
       {
         std::cout << "-> El prefijo no existe en el diccionario." << std::endl;
       }
       else
       {
-        std::cout << "-> Las palabras que inician con el prefijo " << tokens[1]
+        std::cout << "-> Las palabras que inician con el sufijo " << tokens[1]
                   << " son: " << std::endl;
-        for(it = copiaVectorPrefijo.begin(); it != copiaVectorPrefijo.end(); it++){
+        for(it = copiaVectorSufijo.begin(); it != copiaVectorSufijo.end(); it++){
             std::cout<<"- "<<*it<<" - Puntaje: "<<sistema.puntuarPalabra(*it)<<" - "<<"Longitud: "<<sistema.longitudPalabra(*it)<<std::endl;
         }
       }

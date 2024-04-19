@@ -193,4 +193,37 @@ std::vector<std::string> Trie::palabrasPrefijo(std::string prefijo) {
     return resultados;
 }
 
+// Función auxiliar para invertir una cadena
+void invertirCadena(std::string &cadena) {
+    int n = cadena.length();
+    for (int i = 0; i < n / 2; i++) {
+        std::swap(cadena[i], cadena[n - i - 1]);
+    }
+}
+
+std::vector<std::string> Trie::palabrasSufijo(std::string sufijo) {
+    TrieNode* actual = root;
+    std::vector<std::string> resultados;
+
+    // Invierte el sufijo para buscar como prefijo usando la función auxiliar
+    invertirCadena(sufijo);
+
+    // Navegar hasta el nodo del último carácter del "prefijo" invertido
+    for (char ch : sufijo) {
+        int pos = ch - 'a';
+        if (!actual->gethijos()->at(pos)) return resultados;  // Retorna lista vacía si el "prefijo" invertido no existe
+        actual = actual->gethijos()->at(pos);
+    }
+
+    // Recopilar todas las palabras que extienden este "prefijo" invertido
+    recogerPalabras(actual, sufijo, resultados);
+
+    // Debemos invertir las palabras resultantes para volverlas al orden correcto
+    for (std::string &palabra : resultados) {
+        invertirCadena(palabra);
+    }
+
+    return resultados;
+}
+
 #endif
