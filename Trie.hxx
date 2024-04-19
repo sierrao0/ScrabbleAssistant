@@ -164,9 +164,18 @@ bool Trie::iniArbolInverso(std::string diccionario)
     return true;
 }
 
-#endif
+void Trie::recogerPalabras(TrieNode* nodo, std::string palabraActual, std::vector<std::string>& resultados) {
+    if (nodo->getIsEnd()) {
+        resultados.push_back(palabraActual);
+    }
+    for (int i = 0; i < 26; i++) {  // Suponiendo un alfabeto de 'a' a 'z'
+        if (nodo->gethijos()->at(i)) {
+            char siguienteChar = 'a' + i;
+            recogerPalabras(nodo->gethijos()->at(i), palabraActual + siguienteChar, resultados);
+        }
+    }
+}
 
-/*
 std::vector<std::string> Trie::palabrasPrefijo(std::string prefijo) {
     TrieNode* actual = root;
     std::vector<std::string> resultados;
@@ -174,8 +183,8 @@ std::vector<std::string> Trie::palabrasPrefijo(std::string prefijo) {
     // Navegar hasta el nodo del último carácter del prefijo
     for (char ch : prefijo) {
         int pos = ch - 'a';
-        if (!actual->gethijos->at(pos)) return resultados;  // Retorna lista vacía si el prefijo no existe
-        actual = actual->gethijos->at(pos);
+        if (!actual->gethijos()->at(pos)) return resultados;  // Retorna lista vacía si el prefijo no existe
+        actual = actual->gethijos()->at(pos);
     }
 
     // Recopilar todas las palabras que extienden este prefijo
@@ -184,16 +193,4 @@ std::vector<std::string> Trie::palabrasPrefijo(std::string prefijo) {
     return resultados;
 }
 
-void Trie::recogerPalabras(TrieNode* nodo, std::string palabraActual, std::vector<std::string>& resultados) {
-    if (nodo->esFinDePalabra()) {
-        resultados.push_back(palabraActual);
-    }
-    for (int i = 0; i < 26; i++) {  // Suponiendo un alfabeto de 'a' a 'z'
-        if (nodo->gethijos()->at(i)) {
-            char siguienteChar = 'a' + i;
-            recogerPalabras(nodo->gethijos->at(i), palabraActual + siguienteChar, resultados);
-        }
-    }
-}
-
-*/
+#endif

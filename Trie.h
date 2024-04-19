@@ -18,6 +18,7 @@ public:
     void agregarPalabra(std::string palabra);
     bool iniArbol(std::string diccionario);
     bool iniArbolInverso(std::string diccionario);
+    void recogerPalabras (TrieNode* nodo, std::string palabraActual, std::vector<std::string>& resultados);
     std::vector<std::string> palabrasPrefijo(std::string prefijo);
     std::vector<std::string> palabrasSufijo(std::string sufijo);
 

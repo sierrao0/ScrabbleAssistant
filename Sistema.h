@@ -13,6 +13,8 @@ protected:
 public:
     Diccionario *getDiccionario();
     Trie *getArbol();
+    int longitudPalabra(std::string palabra);
+    int puntuarPalabra(std::string palabra);
 };
 
 #include "Sistema.hxx"

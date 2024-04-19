@@ -141,7 +141,12 @@ int main()
     }
     else if (tokens[0] == "palabras_por_prefijo")
     {
-      if (!existe || tokens.size() < 2)
+      int puntaje = sistema.getDiccionario()->puntuarPalabra(tokens[1]);
+      std::vector<std::string> copiaVectorPrefijo;
+      std::vector<std::string>::iterator it; 
+      copiaVectorPrefijo = sistema.getArbol()->palabrasPrefijo(tokens[1]);
+      
+      if (copiaVectorPrefijo.empty())
       {
         std::cout << "-> El prefijo no existe en el diccionario." << std::endl;
       }
@@ -149,20 +154,29 @@ int main()
       {
         std::cout << "-> Las palabras que inician con el prefijo " << tokens[1]
                   << " son: " << std::endl;
-        // TODO #6 -> Imprimir palabras por prefijo
+        for(it = copiaVectorPrefijo.begin(); it != copiaVectorPrefijo.end(); it++){
+            std::cout<<"- "<<*it<<" - Puntaje: "<<sistema.puntuarPalabra(*it)<<" - "<<"Longitud: "<<sistema.longitudPalabra(*it)<<std::endl;
+        }
       }
     }
     else if (tokens[0] == "palabras_por_sufijo")
     {
-      if (!existe || tokens.size() < 2)
+      int puntaje = sistema.getDiccionario()->puntuarPalabra(tokens[1]);
+      std::vector<std::string> copiaVectorPrefijo;
+      std::vector<std::string>::iterator it; 
+      copiaVectorPrefijo = sistema.getArbol()->palabrasPrefijo(tokens[1]);
+      
+      if (copiaVectorPrefijo.empty())
       {
-        std::cout << "-> El sufijo no existe en el diccionario." << std::endl;
+        std::cout << "-> El prefijo no existe en el diccionario." << std::endl;
       }
       else
       {
-        std::cout << "-> Las palabras que terminan con el prefijo " << tokens[1]
+        std::cout << "-> Las palabras que inician con el prefijo " << tokens[1]
                   << " son: " << std::endl;
-        // TODO #7 -> Imprimir palabras por sufijo
+        for(it = copiaVectorPrefijo.begin(); it != copiaVectorPrefijo.end(); it++){
+            std::cout<<"- "<<*it<<" - Puntaje: "<<sistema.puntuarPalabra(*it)<<" - "<<"Longitud: "<<sistema.longitudPalabra(*it)<<std::endl;
+        }
       }
     }
     else if (tokens[0] == "grafo_de_palabras")
