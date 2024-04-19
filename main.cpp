@@ -141,7 +141,7 @@ int main()
     }
     else if (tokens[0] == "palabras_por_prefijo")
     {
-      int puntaje = sistema.getDiccionario()->puntuarPalabra(tokens[1]);
+      int puntaje = 0;
       std::vector<std::string> copiaVectorPrefijo;
       std::vector<std::string>::iterator it; 
       copiaVectorPrefijo = sistema.getArbol()->palabrasPrefijo(tokens[1]);
@@ -161,7 +161,7 @@ int main()
     }
     else if (tokens[0] == "palabras_por_sufijo")
     {
-      int puntaje = sistema.getDiccionario()->puntuarPalabra(tokens[1]);
+      int puntaje = 0;
       std::vector<std::string> copiaVectorSufijo;
       std::vector<std::string>::iterator it; 
       copiaVectorSufijo = sistema.getArbol()->palabrasSufijo(tokens[1]);
