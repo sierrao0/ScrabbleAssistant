@@ -7,14 +7,8 @@
 
 TrieNode::TrieNode()
 {
-    caracteres.resize(26, false); // el vector caracteres inicializa con 26 hijos en estado false
     hijos.resize(26, nullptr);    // el vector hijos inicializa con 26 hijos "vacios"
     isEnd = false;
-}
-
-std::vector<bool> TrieNode::getCaracteres()
-{
-    return this->caracteres;
 }
 
 bool TrieNode::getIsEnd()

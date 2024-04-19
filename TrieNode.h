@@ -8,19 +8,17 @@ class TrieNode
 {
 
 protected:
-    std::vector<bool> caracteres;
-    bool isEnd;
     std::vector<TrieNode *> hijos;
+    bool isEnd;
 
 public:
     TrieNode();
-    std::vector<bool> getCaracteres();
-    bool getIsEnd();
-    void setIsEnd(bool estado);
     std::vector<TrieNode *> *gethijos();
-    TrieNode* getHijo(int index); 
+    TrieNode* getHijo(int index);
     bool esHijoVacio(int index);
     void setHijo(int index);
+    bool getIsEnd();
+    void setIsEnd(bool estado);
 };
 
 #include "TrieNode.hxx"

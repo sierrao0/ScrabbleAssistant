@@ -107,7 +107,7 @@ bool Trie::iniArbol(std::string diccionario)
         if (verificarPalabra(linea))
         {
             this->insert(linea);
-            // std::cout<<i++<<". "<<linea<<std::endl; ---> Probe
+            // std::cout<<i++<<". "<<linea<<std::endl; //---> Probe
         }
     }
     // Cierra el archivo
@@ -154,7 +154,7 @@ bool Trie::iniArbolInverso(std::string diccionario)
             if (verificarPalabra(palabra))
             {
                 // Agrega la última palabra invertida al arbol
-                // std::cout<<h++<<". "<<palabra<<std::endl; ---> Probe
+                // std::cout<<h++<<". "<<palabra<<std::endl; //---> Probe
                 this->insert(palabra);
             }
         }
