@@ -7,6 +7,7 @@ class Trie
 {
 protected:
     TrieNode *root; // Raíz del Trie
+    TrieNode *rootIN; // Raíz del Trie inverso
 
 public:
     Trie();

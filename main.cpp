@@ -10,7 +10,7 @@ void clear() { std::cout << "\033[2J\033[1;1H"; }
 int main()
 {
   std::string opcion;
-  bool inicializado = false, inicializado_IN = false, existe = false, valido = false; // Banderas
+  bool inicializado = false, inicializado_IN = false, existe = false, valido = false, ini_arbol = false, ini_arbol_in = false; // Banderas
   Sistema sistema;                                                                    // Crear un objeto de la clase Sistema
   clear();
   std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|\n"
@@ -97,7 +97,7 @@ int main()
     }
     else if (tokens[0] == "iniciar_arbol")
     {
-      if (inicializado)
+      if (ini_arbol)
       {
         std::cout << "-> El arbol del diccionario ya ha sido inicializado."
                   << std::endl;
@@ -107,10 +107,10 @@ int main()
         if (sistema.getArbol()->iniArbol(tokens[1]))
         {
           std::cout << "-> El Arbol " << tokens[1] << " se ha inicializado correctamente." << std::endl;
-          inicializado = true;
+          ini_arbol = true;
         }
       }
-      if (!inicializado)
+      if (!ini_arbol)
       {
         std::cout
             << "-> El archivo no existe o no se ha podido leer correctamente."
@@ -119,7 +119,7 @@ int main()
     }
     else if (tokens[0] == "iniciar_arbol_inverso")
     {
-      if (inicializado)
+      if (ini_arbol_in)
       {
         std::cout << "-> El arbol del diccionario inverso ya ha sido inicializado."
                   << std::endl;
@@ -129,10 +129,10 @@ int main()
         if (sistema.getArbol()->iniArbolInverso(tokens[1]))
         {
           std::cout << "-> El Arbol inverso " << tokens[1] << " se ha inicializado correctamente." << std::endl;
-          inicializado = true;
+          ini_arbol_in = true;
         }
       }
-      if (!inicializado)
+      if (!ini_arbol_in)
       {
         std::cout
             << "-> El archivo no existe o no se ha podido leer correctamente."
