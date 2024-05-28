@@ -9,15 +9,16 @@
 #include <queue>
 
 // Representación del Grafo
-class Graph {
-private:
+class Grafo
+{
+protected:
     std::unordered_map<std::string, std::unordered_set<std::string>> adjList;
 
 public:
-    void addVertex(std::string& word);
-
-    void addEdge(std::string& word1,std::string& word2);
-
+    void addVertex(std::string &word);
+    void addEdge(std::string &word1, std::string &word2);
+    bool buildWordGraph(std::vector<std::string> &dictionary);
+    bool differByOne(std::string &word1, std::string &word2);
     void printGraph();
 };
 

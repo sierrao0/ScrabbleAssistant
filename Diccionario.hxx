@@ -17,9 +17,9 @@
 // {
 // }
 
-std::vector<std::string> Diccionario::obtenerPalabras()
+std::vector<std::string>* Diccionario::obtenerPalabras()
 {
-    return palabras;
+    return &palabras;
 }
 
 void Diccionario::printDiccionario()

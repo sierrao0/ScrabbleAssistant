@@ -11,6 +11,11 @@ Trie *Sistema::getArbol()
     return &dicArbol;
 }
 
+Grafo *Sistema::getGrafo()
+{
+    return &dicGrafo;
+}
+
 int Sistema::puntuarPalabra(std::string palabra)
 {
     int puntuacion = 0;

@@ -13,7 +13,7 @@ protected:
 public:
     // Diccionario();
     // ~Diccionario();
-    std::vector<std::string> obtenerPalabras();
+    std::vector<std::string> *obtenerPalabras();
     bool verificarPalabra(std::string palabra);
     void agregarPalabra(std::string palabra);
     bool iniDiccionario(std::string diccionario);

@@ -10,8 +10,8 @@ void clear() { std::cout << "\033[2J\033[1;1H"; }
 int main()
 {
   std::string opcion;
-  bool inicializado = false, inicializado_IN = false, existe = false, valido = false, ini_arbol = false, ini_arbol_in = false; // Banderas
-  Sistema sistema;                                                                    // Crear un objeto de la clase Sistema
+  bool inicializado = false, inicializado_IN = false, existe = false, valido = false, ini_arbol = false, ini_arbol_in = false, ini_grafo = false; // Banderas
+  Sistema sistema;                                                                                                                                // Crear un objeto de la clase Sistema
   clear();
   std::cout << "|-----Bienvenido al sistema de apoyo para Scrabble-----|\n"
             << std::endl;
@@ -143,9 +143,9 @@ int main()
     {
       int puntaje = 0;
       std::vector<std::string> copiaVectorPrefijo;
-      std::vector<std::string>::iterator it; 
+      std::vector<std::string>::iterator it;
       copiaVectorPrefijo = sistema.getArbol()->palabrasPrefijo(tokens[1]);
-      
+
       if (copiaVectorPrefijo.empty())
       {
         std::cout << "-> El prefijo no existe en el diccionario." << std::endl;
@@ -154,8 +154,9 @@ int main()
       {
         std::cout << "-> Las palabras que inician con el prefijo " << tokens[1]
                   << " son: " << std::endl;
-        for(it = copiaVectorPrefijo.begin(); it != copiaVectorPrefijo.end(); it++){
-            std::cout<<"- "<<*it<<" - Puntaje: "<<sistema.puntuarPalabra(*it)<<" - "<<"Longitud: "<<sistema.longitudPalabra(*it)<<std::endl;
+        for (it = copiaVectorPrefijo.begin(); it != copiaVectorPrefijo.end(); it++)
+        {
+          std::cout << "- " << *it << " - Puntaje: " << sistema.puntuarPalabra(*it) << " - " << "Longitud: " << sistema.longitudPalabra(*it) << std::endl;
         }
       }
     }
@@ -163,9 +164,9 @@ int main()
     {
       int puntaje = 0;
       std::vector<std::string> copiaVectorSufijo;
-      std::vector<std::string>::iterator it; 
+      std::vector<std::string>::iterator it;
       copiaVectorSufijo = sistema.getArbol()->palabrasSufijo(tokens[1]);
-      
+
       if (copiaVectorSufijo.empty())
       {
         std::cout << "-> El prefijo no existe en el diccionario." << std::endl;
@@ -174,15 +175,24 @@ int main()
       {
         std::cout << "-> Las palabras que inician con el sufijo " << tokens[1]
                   << " son: " << std::endl;
-        for(it = copiaVectorSufijo.begin(); it != copiaVectorSufijo.end(); it++){
-            std::cout<<"- "<<*it<<" - Puntaje: "<<sistema.puntuarPalabra(*it)<<" - "<<"Longitud: "<<sistema.longitudPalabra(*it)<<std::endl;
+        for (it = copiaVectorSufijo.begin(); it != copiaVectorSufijo.end(); it++)
+        {
+          std::cout << "- " << *it << " - Puntaje: " << sistema.puntuarPalabra(*it) << " - " << "Longitud: " << sistema.longitudPalabra(*it) << std::endl;
         }
       }
     }
     else if (tokens[0] == "grafo_de_palabras")
     {
-      // TODO #8 -> Construir grafo de palabras
-      std::cout << "-> Grafo construido correctamente. " << std::endl;
+      if (inicializado)
+      {
+        std::vector<std::string> *dic = sistema.getDiccionario()->obtenerPalabras();
+        if (sistema.getGrafo()->buildWordGraph(*dic))
+        {
+          std::cout << "-> Grafo construido correctamente. " << std::endl;
+          sistema.getGrafo()->printGraph();
+          ini_grafo = true;
+        }
+      }
     }
     else if (tokens[0] == "posibles_palabras")
     {
