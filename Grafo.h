@@ -23,7 +23,7 @@ public:
     bool validarPalabra (std::string &word);
     int puntuarPalabra(std::string palabra);
     void posiblesPalabras(std::string &word);
-    void generarCombinaciones(std::string prefix, std::string letters, std::unordered_set<std::string> &results);
+    void generarCombinaciones(std::string prefijo, std::string letras, std::unordered_set<std::string> &resultados);
     void imprimirGrafo();
 };
 

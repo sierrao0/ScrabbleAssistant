@@ -122,56 +122,56 @@ bool Grafo::validarPalabra(std::string &word)
     return true;
 }
 
-void Grafo::generarCombinaciones(std::string prefix, std::string letters, std::unordered_set<std::string> &results)
+void Grafo::generarCombinaciones(std::string prefijo, std::string letras, std::unordered_set<std::string> &resultados)
 {
     // Si el prefijo no está vacío y es una palabra válida, se añade a los resultados.
-    if (!prefix.empty())
+    if (!prefijo.empty())
     {
-        if (adjList.find(prefix) != adjList.end()) // Verifica si es una palabra válida
+        if (adjList.find(prefijo) != adjList.end()) // Verifica si es una palabra válida
         {
-            results.insert(prefix);
+            resultados.insert(prefijo);
         }
     }
 
-    // Genera nuevas combinaciones añadiendo una letra del conjunto letters al prefijo actual.
-    for (size_t i = 0; i < letters.size(); ++i)
+    // Genera nuevas combinaciones añadiendo una letra del conjunto letras al prefijo actual.
+    for (size_t i = 0; i < letras.size(); ++i)
     {
-        std::string newPrefix = prefix + letters[i];                                 // Construye un nuevo prefijo
-        std::string remainingLetters = letters.substr(0, i) + letters.substr(i + 1); // Letras restantes
-        generarCombinaciones(newPrefix, remainingLetters, results);                  // Llamada recursiva
+        std::string newprefijo = prefijo + letras[i];                                 // Construye un nuevo prefijo
+        std::string remainingletras = letras.substr(0, i) + letras.substr(i + 1); // Letras restantes
+        generarCombinaciones(newprefijo, remainingletras, resultados);                  // Llamada recursiva
     }
 
     // Maneja el comodín '?' reemplazándolo por cada letra del alfabeto.
-    if (letters.find('?') != std::string::npos)
+    if (letras.find('?') != std::string::npos)
     {
-        std::string remainingLetters = letters;
-        remainingLetters.erase(letters.find('?'), 1); // Elimina el comodín de las letras restantes
+        std::string remainingletras = letras;
+        remainingletras.erase(letras.find('?'), 1); // Elimina el comodín de las letras restantes
         for (char c = 'a'; c <= 'z'; ++c)
         {
-            generarCombinaciones(prefix + c, remainingLetters, results); // Llamada recursiva con cada letra del alfabeto
+            generarCombinaciones(prefijo + c, remainingletras, resultados); // Llamada recursiva con cada letra del alfabeto
         }
     }
 }
 
-void Grafo::posiblesPalabras(std::string &letters)
+void Grafo::posiblesPalabras(std::string &letras)
 {
-    if (!validarPalabra(letters))
+    if (!validarPalabra(letras))
     {
-        std::cout << "La cadena " << letters << " contiene símbolos inválidos." << std::endl;
+        std::cout << "La cadena " << letras << " contiene símbolos inválidos." << std::endl;
         return;
     }
 
-    std::unordered_set<std::string> results;
-    generarCombinaciones("", letters, results);
+    std::unordered_set<std::string> resultados;
+    generarCombinaciones("", letras, resultados);
 
-    if (results.empty())
+    if (resultados.empty())
     {
         std::cout << "No se encontraron palabras posibles." << std::endl;
     }
     else
     {
-        std::cout << "Las posibles palabras a construir con las letras " << letters << " son:" << std::endl;
-        for (const auto &word : results)
+        std::cout << "Las posibles palabras a construir con las letras " << letras << " son:" << std::endl;
+        for (const auto &word : resultados)
         {
             std::cout << word << " (longitud: " << word.length() << ", puntuacion: " << puntuarPalabra(word) << ")" << std::endl;
         }
