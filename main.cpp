@@ -186,26 +186,23 @@ int main()
       if (inicializado)
       {
         std::vector<std::string> *dic = sistema.getDiccionario()->obtenerPalabras();
-        if (sistema.getGrafo()->buildWordGraph(*dic))
+        if (sistema.getGrafo()->construirGrafo(*dic))
         {
           std::cout << "-> Grafo construido correctamente. " << std::endl;
-          sistema.getGrafo()->printGraph();
           ini_grafo = true;
         }
       }
     }
     else if (tokens[0] == "posibles_palabras")
     {
-      if (!valido || tokens.size() < 2)
+      if (ini_grafo && tokens.size() < 2)
       {
         std::cout << "-> La cadena esta vacia o contiene simbolos invalidos."
                   << std::endl;
       }
       else
       {
-        std::cout << "-> Las palabras posibles a construir con las letras "
-                  << tokens[1] << " son:" << std::endl;
-        // TODO #9 -> Imprimir posibles palabras
+        sistema.getGrafo()->posiblesPalabras(tokens[1]);
       }
     }
     else if (tokens[0] == "ayuda")
